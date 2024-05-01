@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	const arrowLeft = document.querySelector(".arrow_left");
 	const arrowRight = document.querySelector(".arrow_right");
 	const dotsContainer = document.querySelector(".dots");
-
 	const slides = [
 		{ image: "./assets/images/slideshow/slide1.jpg" },
 		{ image: "./assets/images/slideshow/slide2.jpg" },
@@ -30,11 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		{ image: "./assets/images/slideshow/slide4.png" }
 	];
 
+	arrowLeft.addEventListener("click", function () {
+		console.log("La flèche gauche a été cliquée.");
+	});
+
+	arrowRight.addEventListener("click", function () {
+		console.log("La flèche droite a été cliquée.");
+	});
+
 	const numberOfDots = slides.length; // Nombre de points de navigation à afficher
 	let currentSlideIndex = 0;
 
 	function showSlide(index) {
-		if (index >= 0 && index < slidesText.length) {
+		if (index >= 0 && index < slidesText.length) { // Garantit que l'index se trouve dans la plage des indices des diapositives disponibles.
 			bannerImg.src = slides[index].image; // Met à jour l'image de la diapo
 
 			// Récupère l'élément contenant le texte de la diapo
@@ -71,8 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		showSlide(currentSlideIndex);
 	}
 
-	// Supprimer les points de navigation existants
-	dotsContainer.innerHTML = "";
 
 	// Création des nouveaux points de navigation
 	for (let i = 0; i < numberOfDots; i++) {
